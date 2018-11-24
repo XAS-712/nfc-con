@@ -15,7 +15,7 @@ def funcA():
 print("-"*24)
 print("#"*7 + "NFCConsole" + "#"*7)
 print("-"*24)
-print("Hi, it's " + time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()) + " now.")
+print("Hi, it's " + time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())) + " now.")
 print("This is a interactive CLI for nfc tools.")
 while True:
     print("-"*24)
@@ -27,7 +27,7 @@ while True:
     choice=choice.upper()
     if choice=="Q":
         exit()
-    elif choice="A":
+    elif choice=="A":
         funcA()
     else:
         print("Func not supported.")
