@@ -5,7 +5,7 @@ FUNC_TEXT=[
     "[A] Call \"nfc-list\" to show the card info.",
     "[B] Read Mifare Classic card to a dump file.",
     "[C] Write Mifare Classic card with a dump file.",
-    "[D] Format Mifare Classic card with the key file."
+    "[D] Format Mifare Classic card with the key file.",
     "[E] Crack half-encrypted Mifare classic card and export the key file.",
 ]
 
