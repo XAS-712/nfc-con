@@ -1,6 +1,7 @@
 import subprocess
 import time
 import os
+import random
 
 FUNC_TEXT=[
     "[A] Call \"nfc-list\" to show the card info.",
@@ -52,6 +53,19 @@ def funcB():
             print("[Using default keys]")
     subprocess.call(cmdline,shell=True)
 
+def funcF():
+    cmdline="nfc-mfsetuid"
+    uid=input("Reset Uid(like E627AC10) to:(Enter for a random one)").upper()
+    if uid=="":
+        randomint=random.randint(0,4294967295)
+        uid="%08X" % randomint
+        print("[Generated Uid " + uid +"]")
+    formatcard=input("Do you want to format it?(y/N)").upper()
+    if formatcard=="Y":
+        cmdline=cmdline+" -f"
+    cmdline=cmdline+" "+uid
+    subprocess.call(cmdline,shell=True)
+
 print("-"*24)
 print("#"*7 + "NFCConsole" + "#"*7)
 print("-"*24)
@@ -73,6 +87,8 @@ while True:
         funcA()
     elif choice=="B":
         funcB()
+    elif choice=="F":
+        funcF()
     else:
         print("Func not supported.")
         continue
