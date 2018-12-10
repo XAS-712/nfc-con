@@ -102,6 +102,8 @@ while True:
         funcA()
     elif choice=="B":
         funcB()
+    elif choice=="E":
+        funcE()
     elif choice=="F":
         funcF()
     else:
