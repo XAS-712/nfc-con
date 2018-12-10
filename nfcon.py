@@ -53,6 +53,14 @@ def funcB():
             print("[Using default keys]")
     subprocess.call(cmdline,shell=True)
 
+def funcE():
+    cmdline="mfoc"
+    mfdName = input("Dump filename:(Enter for datetime-named)") + ".mfd"
+    if mfdName==".mfd":
+        mfdName = time.strftime('ck_%Y%m%d_%H:%M:%S',time.localtime(time.time())) + mfdName
+    cmdline=cmdline + " -O mfd/"+mfdName
+    subprocess.call(cmdline,shell=True)
+
 def funcF():
     cmdline="nfc-mfsetuid"
     uid=input("Reset Uid(like E627AC10) to:(Enter for a random one)").upper()
@@ -63,7 +71,14 @@ def funcF():
     formatcard=input("Do you want to format it?(y/N)").upper()
     if formatcard=="Y":
         cmdline=cmdline+" -f"
-    cmdline=cmdline+" "+uid
+    if len(uid)==12:
+        datestr=str(int(uid[-4:]))
+        uid=uid[0:8]
+        print("[Using custom produce date %s]" % datestr)
+        cmdline=cmdline+" "+uid+"2B0804000129013AF604"+datestr
+    else:
+        datestr=time.strftime("%W%y")
+        cmdline=cmdline+" "+uid+"2B0804000129013AF604"+datestr
     subprocess.call(cmdline,shell=True)
 
 print("-"*24)
